@@ -16,6 +16,11 @@
 
 	<!-- WebSocket 연결 -->
 	<script defer src="/js/websocket.js"></script>
+	
+	<!-- 차트 연결-->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+	<script defer src="/js/chart.js"></script>
 </head>
 <body>
 
@@ -35,6 +40,24 @@
     </div>
 
     <div class="content">
+		<div id="hardening" class="page">
+					<h2>하도 전착</h2>
+					<canvas id="waterLevelChart" width="100%" height="10"></canvas>
+					<canvas id="viscosityChart" width="100%" height="10"></canvas>
+					<canvas id="phChart" width="100%" height="10"></canvas>
+					<canvas id="currentChart" width="100%" height="10"></canvas>
+					<canvas id="voltageChart" width="100%" height="10"></canvas>
+				</div>
+				<div id="drying" class="page">
+					<h2>건조 환경</h2>
+					<canvas id="temperatureChart" width="100%" height="25"></canvas>
+					<canvas id="humidityChart" width="100%" height="25"></canvas>					
+				</div>
+				<div id="painting" class="page">
+					<h2>도장 공정</h2>
+					<canvas id="paintAmountChart" width="100%" height="25"></canvas>
+					<canvas id="pressureChart" width="100%" height="25"></canvas>					
+				</div>
 
         <!-- 조회/다운로드 -->
         <div id="download" class="page">
