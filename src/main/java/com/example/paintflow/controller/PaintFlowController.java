@@ -47,7 +47,7 @@ public class PaintFlowController {
             @PathVariable String end,
             HttpServletResponse response) throws IOException {
         
-        System.out.println("📥 다운로드 요청: " + process + " " + start + " ~ " + end);
+        System.out.println("다운로드 요청: " + process + " " + start + " ~ " + end);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         LocalDateTime startDate = LocalDateTime.parse(start, formatter);
@@ -56,7 +56,7 @@ public class PaintFlowController {
         List<?> dataList = paintFlowService.getDataByProcess(process, startDate, endDate);
 
         if (dataList.isEmpty()) {
-            System.out.println("⚠ 데이터 없음");
+            System.out.println("데이터 없음");
             return;
         }
 
