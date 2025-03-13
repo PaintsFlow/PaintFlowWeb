@@ -1,11 +1,11 @@
-var socket = new SockJS('/ws');
-var stompClient = Stomp.over(socket);
+var alarmSocket = new SockJS('/ws');
+var alarmStompClient = Stomp.over(alarmSocket);
 
-stompClient.connect({}, function (frame) {
+alarmStompClient.connect({}, function (frame) {
     console.log("Connected to WebSocket: " + frame);
 
     // WebSocket 메시지 구독 (센서 데이터)
-    stompClient.subscribe('/topic/sensorData', function (message) {
+    alarmStompClient.subscribe('/topic/sensorData', function (message) {
         var sensorData = JSON.parse(message.body);
         displayLiveAlarm(sensorData); // 🔥 실시간 알람 표시
     });

@@ -108,13 +108,13 @@ function updateCharts(newData) {
 
 // WebSocket 연결 시도
 function connectWebSocket() {
-  const socket = new SockJS('/ws');
-  const stompClient = Stomp.over(socket);
+	var chartSocket = new SockJS('/ws');
+	var chartStompClient = Stomp.over(chartSocket);
 
-  stompClient.connect({}, function (frame) {
+  chartStompClient.connect({}, function (frame) {
     console.log('WebSocket 연결됨:', frame);
 
-    stompClient.subscribe('/topic/sensorDataUpdate', function (message) {
+    chartStompClient.subscribe('/topic/sensorDataUpdate', function (message) {
       try {
         console.log('WebSocket으로 수신한 원본 메시지:', message);  // 원본 메시지 출력
 
