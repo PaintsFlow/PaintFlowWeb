@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Flow</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/js/script.js"></script>
+	<!-- SockJS & STOMP 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+
+	<!-- SockJS & STOMP 라이브러리 -->
+	<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+
+	<!-- WebSocket 연결 -->
+	<script defer src="/js/websocket.js"></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <img src="images/logo.png" alt="Paint Flow Logo" class="logo">
+        <ul class="menu">
+            <li id="hardeningBtn" onclick="showPage('hardening', this)">하도 전착</li>
+            <li id="dryingBtn" onclick="showPage('drying', this)">건조 환경</li>
+            <li id="paintingBtn" onclick="showPage('painting', this)">도장 공정</li>
+            <li id="inspectionBtn" onclick="showPage('inspection', this)">결함 검사</li>
+            <li id="alarmBtn" onclick="showPage('alarm', this)">알림</li>
+            <li id="downloadBtn" onclick="showPage('download', this)">조회/다운로드</li>
+        </ul>
+        <button class="notice">Notice</button>
+        <div id="notices"></div>
+		<div id="liveAlarmContainer"></div>
+    </div>
+
+    <div class="content">
+
+        <!-- 조회/다운로드 -->
+        <div id="download" class="page">
+            <h2>조회/다운로드</h2>
+            <label for="processSelect">공정 선택 </label>
+            <select id="processSelect">
+                <option value="electroDeposition">하도 전착</option>
+                <option value="dry">건조 환경</option>
+                <option value="paint">도장 공정</option>
+            </select>
+            <label for="startDate">시작 날짜 </label>
+            <input type="date" id="startDate">
+            <label for="endDate">종료 날짜 </label>
+            <input type="date" id="endDate">
+            <button onclick="loadFilteredData()">조회</button>
+            <button onclick="downloadData()">다운로드</button>
+
+            <div id="result">
+                <h3 id="selectedProcessTitle">데이터 표시</h3>
+                <table id="dataTable" border="1">
+                    <thead>
+                        <tr id="tableHeader"></tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+                <div id="pagination"></div>
+            </div>
+        </div>
+
+        <!-- 알림 페이지 -->
+        <div id="alarm" class="page">
+            <h2>알림 조회</h2>
+            <label>공정 선택</label>
+            <select id="alarmProcessSelect">
+                <option value="electroDeposition">하도 전착</option>
+                <option value="dry">건조 환경</option>
+                <option value="paint">도장 공정</option>
+            </select>
+            <label>시작 날짜</label>
+            <input type="date" id="alarmStartDate">
+            <label>종료 날짜</label>
+            <input type="date" id="alarmEndDate">
+            <button onclick="loadAlarmData()">알림 조회</button>
+            <div id="alarmResult">
+                <h3>알림 데이터</h3>
+                <table id="alarmTable">
+                    <thead>
+                        <tr id="alarmTableHeader"></tr>
+                    </thead>
+                    <tbody id="alarmTableBody"></tbody>
+                </table>
+                <div id="alarmPagination"></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

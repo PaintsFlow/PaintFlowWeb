@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    background-color: #FAF8F6;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #FFF;
+    padding: 20px;
+    border-right: 1px solid #E0E0E0;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #E6D3B3;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-bottom: 5px;
+}
+
+.menu li:hover {
+    background-color: #F5EFE7;
+}
+
+.menu li.active {
+    background-color: #F5EFE7;
+    color: black;
+    font-weight: bold;
+    border: 1px solid #E6D3B3;
+}
+
+.notice {
+    background-color: #4B3F72;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#liveAlarmContainer {
+    margin-top: 10px;
+    padding: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.live-alarm-item {
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ===================== 테이블 스타일 수정 ===================== */
+
+table {
+    width: 100%;
+    max-width: 85%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* 테이블 헤더 스타일 */
+th {
+    background-color: #F5EFE7;
+    border: 1px solid #E6D3B3;
+    padding: 12px;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* 테이블 데이터 스타일 */
+td {
+    border: 1px solid #E6D3B3;
+    padding: 12px;
+    text-align: right;
+}
+
+/* 조회/다운로드 페이지와 동일한 스타일 적용 */
+#dataTable, #alarmTable {
+    margin-top: 20px;
+}
+
+#dataTable th, #alarmTable th {
+    background-color: #F5EFE7;
+    text-align: center;
+    padding: 12px;
+}
+
+#dataTable td, #alarmTable td {
+    padding: 12px;
+}
+
+/* ===================== 페이지네이션 스타일 추가 ===================== */
+#pagination, #alarmPagination {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.page-btn {
+    background-color: #4B3F72;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-btn:hover {
+    background-color: #6A5ACD;
+}
+
+.page-btn:disabled {
+    background-color: #D3D3D3;
+    cursor: not-allowed;
+}
